@@ -44,7 +44,7 @@ def open_new_trackers(frame, prediction):
             return
 
     # If we've reached this point, no significant overlap was found
-    print("Opening new tracker")
+    # print("Opening new tracker")
     
     # Create a new tracker instance
     new_tracker = Tracker()
@@ -62,13 +62,14 @@ def update_trackers(frame):
         return
 
     # Iterate over a copy of the tracker list to safely modify it during iteration
-    for tracker in tracker_list[:]:
+    for i,tracker in enumerate(tracker_list[:]):
         # Update each tracker with the current frame
         is_active = tracker.update_tracker(frame)
 
         # If the tracker is no longer active (returns None), remove it from the list
         if is_active is None:
             tracker_list.remove(tracker)  # Remove the tracker from the list
+            print(f"Tracker {i} removed due to inactivity")
 
     # Note: After this function, tracker_list will only contain active trackers
 

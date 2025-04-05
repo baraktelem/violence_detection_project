@@ -1,15 +1,18 @@
 import cv2
+import numpy as np
 
 class Tracker:
     NUM_OF_FRAMES_TO_TRACK = 30  # Maximum number of frames to track an object before re-detection
     OVERLAP_THRESHOLD = 0.2
 
-
     def __init__(self):
-        self.tracker = cv2.TrackerCSRT_create()  # Tracker initialization (You can replace with other trackers)
+        # Initialize the GOTURN tracker
+        self.tracker = cv2.TrackerCSRT_create()  # Replace CSRT with GOTURN
         self.frame_counter = 0  # Frame counter to track how many frames the tracker has been active
         self.bbox = None  # Bounding box (to be set during initialization)
 
+        # Load the Haar cascade classifier once during initialization
+        self.face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
 
     def initialize_tracker(self, frame, prediction):
         """
@@ -21,40 +24,64 @@ class Tracker:
         self.frame_counter = 0  # Reset frame counter
         return self  # Returning self allows method chaining or direct access to the object
 
-
     def update_tracker(self, frame):
         """
         Updates the tracker with a new frame and returns the updated bounding box.
         If the tracker exceeds the specified number of frames to track, it stops tracking.
         """
         self.frame_counter += 1  # Increment frame counter
-        
+
         # If the tracker has been active for more than the specified number of frames, destroy it
         if self.frame_counter >= self.NUM_OF_FRAMES_TO_TRACK:
             self.destroy_tracker()
             return None
-        
-        ok, new_bbox = self.tracker.update(frame)  # Update the tracker with the new frame
-        if ok:
-            p1 = (int(new_bbox[0]), int(new_bbox[1]))
-            p2 = (int(new_bbox[0] + new_bbox[2]), int(new_bbox[1] + new_bbox[3]))
-            cv2.rectangle(frame, p1, p2, (255,0,0), 2, 1)
-            self.bbox = new_bbox
-            # prediction_match = self.check_bbox_overlap(prediction)
-            return True # Return updated bounding box if tracking is successful
-        else:
-            self.destroy_tracker()
-            return None  # If tracking failed, return None
 
+        ok, new_bbox = self.tracker.update(frame)  # Update the tracker with the new frame
+        if not ok:  # Tracking failed
+            self.destroy_tracker()
+            return None
+
+        # Draw the tracked bounding box on the frame
+        p1 = (int(new_bbox[0]), int(new_bbox[1]))
+        p2 = (int(new_bbox[0] + new_bbox[2]), int(new_bbox[1] + new_bbox[3]))
+        cv2.rectangle(frame, p1, p2, (255, 0, 0), 2, 1)
+        self.bbox = new_bbox
+
+        # Crop the tracked region from the frame
+        x, y, w, h = map(int, new_bbox)
+        tracked_region = frame[y:y + h, x:x + w]
+
+        # Convert the cropped region to grayscale (required for Haar cascades)
+        gray_tracked_region = cv2.cvtColor(tracked_region, cv2.COLOR_BGR2GRAY)
+
+        # Detect objects (e.g., faces) in the cropped region
+        faces = self.face_cascade.detectMultiScale(gray_tracked_region, # Detect faces in the tracked region
+                                                    scaleFactor=1.1,    # Scale factor for the detection
+                                                    minNeighbors=1)     # Minimum neighbors for a rectangle to be retained
+        
+        if len(faces) == 0:  # No faces detected in the tracked region
+            print(f"No faces detected in bbox {self.bbox}")
+
+        # Draw rectangles around detected objects on the original frame
+        else:
+            for (fx, fy, fw, fh) in faces:
+                # Adjust face coordinates relative to the original frame
+                face_x = x + fx
+                face_y = y + fy
+                face_w = fw
+                face_h = fh
+
+            # Draw the rectangle on the original frame
+            cv2.rectangle(frame, (face_x, face_y), (face_x + face_w, face_y + face_h), (0, 255, 0), 2)
+
+        return True  # Return updated bounding box if tracking is successful
 
     def destroy_tracker(self):
         """
         Destroys the tracker and frees up the resources.
         """
-        print("closing tracker")
         del self.tracker  # Explicitly delete the tracker object to free resources
         self.tracker = None  # Set the tracker reference to None
-        
 
     def check_bbox_overlap(self, prediction):
         pred_bbox = self.convert_prediction_bbox(prediction)
@@ -83,7 +110,6 @@ class Tracker:
         iou = intersection_area / union_area if union_area > 0 else 0.0
 
         return iou
-
 
     def convert_prediction_bbox(self, prediction):
         # Extract the bounding box from the prediction (center x, center y, width, height)
