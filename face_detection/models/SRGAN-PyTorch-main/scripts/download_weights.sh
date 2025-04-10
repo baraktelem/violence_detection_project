@@ -7,7 +7,7 @@ if [ "$FILE" == "SRGAN_x2-SRGAN_ImageNet" ]; then
 elif [ "$FILE" == "SRGAN_x4-SRGAN_ImageNet" ]; then
   URL="https://huggingface.co/goodfellowliu/SRGAN-PyTorch/resolve/main/SRGAN_x4-SRGAN_ImageNet.pth.tar"
   FILE_PATH=./results/pretrained_models
-  wget $URL -P $FILE_PATH
+  curl -k $URL -P $FILE_PATH
 elif [ "$FILE" == "SRGAN_x8-SRGAN_ImageNet" ]; then
   URL="https://huggingface.co/goodfellowliu/SRGAN-PyTorch/resolve/main/SRGAN_x8-SRGAN_ImageNet.pth.tar"
   FILE_PATH=./results/pretrained_models
