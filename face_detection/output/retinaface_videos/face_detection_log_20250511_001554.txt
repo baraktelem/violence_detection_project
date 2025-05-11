@@ -1,0 +1,8 @@
+[2025-05-11 00:15:54] Starting face detection processing
+[2025-05-11 00:15:54] Input folder: c:\Users\barak\OneDrive - Technion\Documents\GitHub\violence_detection_project\face_detection\input\videos
+[2025-05-11 00:15:54] Output folder: c:\Users\barak\OneDrive - Technion\Documents\GitHub\violence_detection_project\face_detection\output\retinaface_videos
+[2025-05-11 00:15:54] 
+Processing video: hospital_exp.mp4
+[2025-05-11 01:28:34] 
+Processing video: hospital_exp2.mp4
+[2025-05-11 02:09:07] Face detection processing completed

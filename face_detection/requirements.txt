@@ -2,3 +2,6 @@ opencv-python
 opencv-contrib-python
 roboflow
 supervision
+
+# additional for skeleton:
+mediapipe

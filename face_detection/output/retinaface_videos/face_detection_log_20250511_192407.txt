@@ -1,0 +1,33 @@
+[2025-05-11 19:24:07] Starting face detection processing
+[2025-05-11 19:24:07] Input folder: c:\Users\barak\OneDrive - Technion\Documents\GitHub\violence_detection_project\face_detection\input\videos
+[2025-05-11 19:24:07] Output folder: c:\Users\barak\OneDrive - Technion\Documents\GitHub\violence_detection_project\face_detection\output\retinaface_videos
+[2025-05-11 19:24:07] Found 15 video files in input directory
+[2025-05-11 19:24:07] 
+Processing video: fall.mp4
+[2025-05-11 19:30:10] 
+Processing video: four_people_struggle_proximity.mp4
+[2025-05-11 19:37:49] 
+Processing video: four_people_violence_fast_movement.mp4
+[2025-05-11 19:49:09] Skipping already processed video: hospital_exp.mp4
+[2025-05-11 19:49:09] Skipping already processed video: hospital_exp2.mp4
+[2025-05-11 19:49:09] 
+Processing video: kick_fast.mp4
+[2025-05-11 19:53:57] 
+Processing video: lying_down_few_people.mp4
+[2025-05-11 19:59:02] 
+Processing video: lying_down_proximity.mp4
+[2025-05-11 20:08:24] 
+Processing video: multiple_people.mp4
+[2025-05-11 20:16:23] 
+Processing video: people_walking_in_line.mp4
+[2025-05-11 20:22:47] 
+Processing video: single_person_walking.mp4
+[2025-05-11 20:26:11] 
+Processing video: two_people_facing_camera.mp4
+[2025-05-11 20:35:33] 
+Processing video: two_people_hit.mp4
+[2025-05-11 20:38:41] 
+Processing video: two_people_struggle_proximity.mp4
+[2025-05-11 20:44:12] 
+Processing video: violence_proximity_multiple.mp4
+[2025-05-11 20:56:54] Face detection processing completed

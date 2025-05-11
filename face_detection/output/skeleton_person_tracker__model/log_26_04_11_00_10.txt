@@ -1,0 +1,82 @@
+Detected 10 video files in input directory
+
+[11:00] Processing video 1: hopital_exp2.mp4
+	1. Video Parameters:
+		Frame Width: 960
+		Frame Height: 576
+		FPS: 24
+		Number of Frames: 632.0
+[11:15] Finished processing video 1
+
+[11:15] Processing video 2: hospital_exp.mp4
+	2. Video Parameters:
+		Frame Width: 960
+		Frame Height: 576
+		FPS: 24
+		Number of Frames: 1048.0
+[19:20] Finished processing video 2
+
+[19:20] Processing video 3: LIVELEAK_LiveLeak3_struggle_1.mp4
+	3. Video Parameters:
+		Frame Width: 1280
+		Frame Height: 720
+		FPS: 30
+		Number of Frames: 150.0
+[19:24] Finished processing video 3
+
+[19:24] Processing video 4: NTU_fight0120_struggle_1.mp4
+	4. Video Parameters:
+		Frame Width: 480
+		Frame Height: 360
+		FPS: 30
+		Number of Frames: 180.0
+[19:26] Finished processing video 4
+
+[19:26] Processing video 5: UCFCRIME_Abuse007_walk_1.mp4
+	5. Video Parameters:
+		Frame Width: 320
+		Frame Height: 240
+		FPS: 30
+		Number of Frames: 150.0
+[19:35] Finished processing video 5
+
+[19:35] Processing video 6: UCFCRIME_Arson017_walk_1.mp4
+	6. Video Parameters:
+		Frame Width: 320
+		Frame Height: 240
+		FPS: 30
+		Number of Frames: 60.0
+[19:36] Finished processing video 6
+
+[19:36] Processing video 7: UCFCRIME_Shoplifting040_stand_1.mp4
+	7. Video Parameters:
+		Frame Width: 320
+		Frame Height: 240
+		FPS: 30
+		Number of Frames: 150.0
+[19:38] Finished processing video 7
+
+[19:38] Processing video 8: UCFCRIME_Shoplifting047_grab_1.mp4
+	8. Video Parameters:
+		Frame Width: 320
+		Frame Height: 240
+		FPS: 30
+		Number of Frames: 180.0
+[19:41] Finished processing video 8
+
+[19:41] Processing video 9: UCFCRIME_Stealing101_walk_1.mp4
+	9. Video Parameters:
+		Frame Width: 320
+		Frame Height: 240
+		FPS: 30
+		Number of Frames: 120.0
+[19:43] Finished processing video 9
+
+[19:43] Processing video 10: YOUTUBE_YouTubeCCTV147_struggle_1.mp4
+	10. Video Parameters:
+		Frame Width: 640
+		Frame Height: 360
+		FPS: 30
+		Number of Frames: 150.0
+[19:45] Finished processing video 10
+[19:45] Finished processing all videos!
